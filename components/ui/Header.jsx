@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { CursorContext } from "./CursorContext";
 import Link from "next/link";
 import Image from "next/image";
+import {AiOutlineMenu} from "react-icons/ai";
 
 const Header = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -16,7 +17,7 @@ const Header = () => {
       <div className="bg-secondary-100 mb-6 xl:mb-[50px] xl:h-[50px] py-4 xl:py-0">
         topbar
       </div>
-      <div className="container">
+      <div className="container mx-auto flex items-center justify-between px-6">
         {/* Logo */}
         <div>
           <Link href="/">
@@ -30,6 +31,9 @@ const Header = () => {
           </Link>
         </div>
         {/* Mobile nav trigger */}
+        <div className="xl:hidden cursor-pointer">
+            <AiOutlineMenu className="text-3xl text-primary"/>
+        </div>
       </div>
     </header>
   );
