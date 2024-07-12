@@ -1,12 +1,16 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CursorContext } from "./CursorContext";
 import Link from "next/link";
 import Image from "next/image";
-import {AiOutlineMenu} from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
+import { motion } from "framer-motion";
+import MobileNav from "./MobileNav";
+import Nav from "./Nav";
 
 const Header = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+  const [mobileNav, setMobileNav] = useState(false);
   return (
     <header
       onMouseEnter={mouseEnterHandler}
@@ -31,9 +35,25 @@ const Header = () => {
           </Link>
         </div>
         {/* Mobile nav trigger */}
-        <div className="xl:hidden cursor-pointer">
-            <AiOutlineMenu className="text-3xl text-primary"/>
+        <div
+          className="xl:hidden cursor-pointer"
+          onClick={() => setMobileNav(!mobileNav)}
+        >
+          <AiOutlineMenu className="text-3xl text-primary" />
         </div>
+        {/* Mobile nav */}
+        <motion.div
+          initial={{ right: "-100%" }}
+          animate={{ right: mobileNav ? 0 : "-100%" }}
+          className="fixed bg-primary top-0 bottom-0 right-0 w-[300px] xl:hidden z-50"
+        >
+          <MobileNav setMobileNav={setMobileNav}/>
+        </motion.div>
+      {/* Desktop nav */}
+      <div className="hidden xl:block">
+        <Nav/>
+      </div>
+
       </div>
     </header>
   );
