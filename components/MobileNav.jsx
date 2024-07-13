@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IoCloseOutline } from "react-icons/io5";
+import Socials from "./Socials";
 
 const links = [
   {
@@ -39,7 +40,7 @@ const MobileNav = ({ setMobileNav }) => {
           );
         })}
       </ul>
-      <div className="text-white">socials</div>
+      <Socials containerStyles="text-white text-lg flex justify-center gap-6" />
     </nav>
   );
 };
