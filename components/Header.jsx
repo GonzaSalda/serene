@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaPhoneAlt } from "react-icons/fa";
-import {IoMdMail} from "react-icons/io";
+import { IoMdMail } from "react-icons/io";
 import { motion } from "framer-motion";
 import MobileNav from "./MobileNav";
 import Nav from "./Nav";
@@ -25,7 +25,11 @@ const Header = () => {
         <div className="container mx-auto h-full">
           <div className=" flex items-center justify-between h-full">
             {/* Phone & email */}
-            <div className="flex flex-col lg:flex-row items-center h-full gap-2 xl:gap-6 w-full justify-between xl:w-auto xl:justify-normal">
+            <motion.div
+              onMouseEnter={mouseEnterHandler}
+              onMouseLeave={mouseLeaveHandler}
+              className="flex flex-col lg:flex-row items-center h-full gap-2 xl:gap-6 w-full justify-between xl:w-auto xl:justify-normal"
+            >
               {/* Phone */}
               <div className="flex gap-2 items-center text-white">
                 <FaPhoneAlt className="text-white" />
@@ -33,20 +37,27 @@ const Header = () => {
               </div>
               {/* Email */}
               <div className="flex gap-2 items-center text-white">
-                  <IoMdMail className="text-white" />
-                  <span className="text-white">info@gmail.com</span>
+                <IoMdMail className="text-white" />
+                <span className="text-white">info@gmail.com</span>
               </div>
-            </div>
+            </motion.div>
             {/* Socials */}
-            <div className="hidden xl:block">
-              <Socials containerStyles="flex gap-6 text-white"/>
-            </div>
+            <motion.div
+              onMouseEnter={mouseEnterHandler}
+              onMouseLeave={mouseLeaveHandler}
+              className="hidden xl:block"
+            >
+              <Socials containerStyles="flex gap-6 text-white" />
+            </motion.div>
           </div>
         </div>
       </div>
       <div className="container mx-auto flex items-center justify-between px-6">
         {/* Logo */}
-        <div>
+        <motion.div
+          onMouseEnter={mouseEnterHandler}
+          onMouseLeave={mouseLeaveHandler}
+        >
           <Link href="/">
             <Image
               src="assets/logo.svg"
@@ -56,7 +67,7 @@ const Header = () => {
               alt=""
             />
           </Link>
-        </div>
+        </motion.div>
         {/* Mobile nav trigger */}
         <div
           className="xl:hidden cursor-pointer"
