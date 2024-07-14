@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useContext } from "react";
 import { CursorContext } from "../components/CursorContext";
 import Image from "next/image";
+import ModalVideo from "@/components/ModalVideo";
 const Home = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
   return (
@@ -23,7 +24,7 @@ const Home = () => {
               Tailored skincare solutions for a healthy complexion, offering
               customized care for radiant skin
             </p>
-            <div>
+            <div className="flex flex-col xl:flex-row items-center gap-6 max-w-max mx-auto xl:mx-0">
               <button className="btn btn-lg">Book an appointment</button>
               <div>
                 <ModalVideo/>
@@ -31,7 +32,7 @@ const Home = () => {
             </div>
           </div>
           {/* Image */}
-          <div className="flex-1">
+          <div className="flex-1 ">
             <div className="hidden xl:flex fixed bottom-0">
               <Image
                 src={"/assets/home/img.png"}
